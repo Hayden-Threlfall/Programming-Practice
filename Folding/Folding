@@ -1,0 +1,38 @@
+import sys
+cols =0
+rows =0
+posx = 0
+posy = 0
+count = 0
+with open('FoldingS.txt') as f:
+    lines = f.readlines()
+
+#Fidning how many rows and coloms are needed
+for r in range(len(lines)):
+    if(lines[len(lines)-(1+r)]=="\n"):
+        break
+    count+=1
+
+for r in range(2):
+    tempr = lines[len(lines)-count+r].replace("\n","").rsplit("=")
+    if(tempr[0]=="fold along x"):
+        cols = int(tempr[1]) * 2 + 1
+    if(tempr[0]=="fold along y"):
+        rows = int(tempr[1]) * 2 + 1
+
+arr = [[0 for x in range(cols)] for y in range(rows)]
+
+#Pushing data to table
+for r in lines:
+    if (r == "\n"):
+        break
+    posx = int(r.replace("\n","").rsplit(',')[0])
+    posy = int(r.replace("\n","").rsplit(',')[1])
+    arr[posy][posx] = 1
+
+#Printing 2d array
+for i in range(len(arr)):
+    for j in range(len(arr[i])):
+        print(arr[i][j], end=' ')
+    print()
+
