@@ -7,7 +7,7 @@ count = 0
 with open('FoldingS.txt') as f:
     lines = f.readlines()
 
-#Fidning how many rows and coloms are needed
+#Finding how many rows and coloms are needed
 for r in range(len(lines)):
     if(lines[len(lines)-(1+r)]=="\n"):
         break
@@ -30,9 +30,31 @@ for r in lines:
     posy = int(r.replace("\n","").rsplit(',')[1])
     arr[posy][posx] = 1
 
-#Printing 2d array
+def fold_x(pos):
+    #Mirror the values of the array 
+    ###Second idea for halfing set values to 2 that are iterated use the arr.remove(2) 
+    ###and repeate until everything is gonne, Would be innefficent
+    #Half the array
+    for r in range(int(len(arr)/2)):
+        arr.pop(r+int(len(arr)/2))
+    print(pos)
+
+def fold_y(pos):
+    #Half the array
+    for r in range(int(len(arr)/2)):
+        for j in range(len(arr[i]/2))
+            arr.pop(r+int(len(arr[i]/2)))
+    print(pos)
+
+for r in range(count):
+    tempr = lines[len(lines)-count+r].replace("\n","").rsplit("=")
+    if(tempr[0]=="fold along x"):
+        fold_x(int(tempr[1]) * 2 + 1)
+    if(tempr[0]=="fold along y"):
+        fold_y(int(tempr[1]) * 2 + 1)
+
+        #Printing 2d array
 for i in range(len(arr)):
     for j in range(len(arr[i])):
         print(arr[i][j], end=' ')
     print()
-
