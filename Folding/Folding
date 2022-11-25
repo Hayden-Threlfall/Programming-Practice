@@ -1,10 +1,10 @@
 import sys
-cols =0
-rows =0
+cols = 0
+rows = 0
 posx = 0
 posy = 0
 count = 0
-with open('FoldingS.txt') as f:
+with open('Folding.txt') as f:
     lines = f.readlines()
 
 #Finding how many rows and coloms are needed
@@ -12,7 +12,7 @@ for r in range(len(lines)):
     if(lines[len(lines)-(1+r)]=="\n"):
         break
     count+=1
-
+    
 for r in range(2):
     tempr = lines[len(lines)-count+r].replace("\n","").rsplit("=")
     if(tempr[0]=="fold along x"):
@@ -30,31 +30,53 @@ for r in lines:
     posy = int(r.replace("\n","").rsplit(',')[1])
     arr[posy][posx] = 1
 
-def fold_x(pos):
-    #Mirror the values of the array 
-    ###Second idea for halfing set values to 2 that are iterated use the arr.remove(2) 
-    ###and repeate until everything is gonne, Would be innefficent
-    #Half the array
-    for r in range(int(len(arr)/2)):
-        arr.pop(r+int(len(arr)/2))
-    print(pos)
+arr = [[0 for x in range(cols)] for y in range(rows)]
 
-def fold_y(pos):
-    #Half the array
-    for r in range(int(len(arr)/2)):
-        for j in range(len(arr[i]/2))
-            arr.pop(r+int(len(arr[i]/2)))
-    print(pos)
+#Pushing data to table
+for r in lines:
+    if (r == "\n"):
+        break
+    posx = int(r.replace("\n","").rsplit(',')[0])
+    posy = int(r.replace("\n","").rsplit(',')[1])
+    arr[posy][posx] = 1
+
+def fold_x(posx):
+    for r in range(len(arr)):
+        arr[r].pop(posx)
+    for r in range(len(arr)):
+        for j in range(posx):
+                arr[r][(posx-1)-j] |= arr[r][posx+j]
+    for r in range(len(arr)):
+        for j in range(posx):
+            arr[r].pop(posx)
+
+
+def fold_y(posy):
+    arr.pop(posy)
+    for r in range(posy):
+        for j in range(len(arr[r])):
+            arr[(posy-1)-r][j] |= arr[posy+r][j]
+    for r in range(posy):
+        arr.pop(posy)
+
 
 for r in range(count):
     tempr = lines[len(lines)-count+r].replace("\n","").rsplit("=")
     if(tempr[0]=="fold along x"):
-        fold_x(int(tempr[1]) * 2 + 1)
+        fold_x(int(tempr[1]))
     if(tempr[0]=="fold along y"):
-        fold_y(int(tempr[1]) * 2 + 1)
+        fold_y(int(tempr[1]))
 
-        #Printing 2d array
+
+#Printing 2d array
 for i in range(len(arr)):
     for j in range(len(arr[i])):
         print(arr[i][j], end=' ')
     print()
+
+#Printing total count
+totalCount = 0
+for i in range(len(arr)):
+    for j in range(len(arr[i])):
+        totalCount += arr[i][j]
+print(totalCount)
