@@ -8,7 +8,6 @@ def priority(ch):
         num =  (ord(ch) - 65) + 27
     return num
 
-temp = ""
 count = 0
 i = 0
 con = 0
