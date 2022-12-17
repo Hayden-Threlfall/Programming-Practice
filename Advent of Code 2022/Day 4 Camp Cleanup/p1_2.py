@@ -16,10 +16,12 @@ def arrCreate(str):
         else:
             c1+=1
             c2 = 0
+    for l in range(len(arr)):
+        arr[l] = int(arr[l])
     return(arr)
 
 for str in input:
     temp = arrCreate(str)
-    if((int(temp[2])>=int(temp[0]) and int(temp[3])<=int(temp[1])) or (int(temp[0])>=int(temp[2]) and int(temp[1])<=int(temp[3]))):
+    if(((temp[2])>=temp[0] and temp[3]<=temp[1]) or (temp[0]>=temp[2] and temp[1]<=temp[3])):
         count += 1
 print(count)
