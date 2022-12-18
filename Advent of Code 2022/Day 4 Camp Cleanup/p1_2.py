@@ -1,4 +1,4 @@
-with open('input.txt') as f:
+with open('input-small.txt') as f:
     input = f.readlines()
 
     count = 0
