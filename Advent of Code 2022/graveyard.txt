@@ -1,0 +1,60 @@
+    // for i in 1..SIZE - 1 {
+    //     for j in 1..SIZE - 1 {
+    //         i2 = i;
+    //         j2 = j;
+    //         bool = true;
+    //         while i2 > 0 {
+    //             if arr[i][j] > arr[i2 - 1][j] && !seen[i][j] {
+    //                 bool = false;
+    //             }
+    //             i2 -= 1;
+    //         }
+    //         if seen[i][j] != true {
+    //             seen[i][j] = bool;
+    //         }
+    //         while j2 > 0 {
+    //             if arr[i][j] > arr[i][j2 - 1] && !seen[i][j] {
+    //                 bool = false;
+    //             }
+    //             j2 -= 1;
+    //         }
+    //         if seen[i][j] != true {
+    //             seen[i][j] = bool;
+    //         }
+    //         i2 = i;
+    //         j2 = j;
+    //         while i2 < SIZE - 1 {
+    //             if arr[i][j] > arr[i2 + 1][j] && !seen[i][j] {
+    //                 bool = false;
+    //             }
+    //             i2 += 1;
+    //         }
+    //         if seen[i][j] != true {
+    //             seen[i][j] = bool;
+    //         }
+    //         while j2 < SIZE - 1 {
+    //             if arr[i][j] > arr[i][j2 + 1] && !seen[i][j] {
+    //                 bool = false;
+    //             }
+    //             j2 += 1;
+    //         }
+    //         if seen[i][j] != true {
+    //             seen[i][j] = bool;
+    //         }
+    //     }
+    // }
+
+        // Implement the Tree seen function // Recursion?? maybe not
+    // Needs more brain power to finish
+    // let mut t = 0;
+    // if SIZE % 2 != 2 {
+    //     t = 1;
+    // }
+    // for i in 1..SIZE / 2 + t {
+    //     for j in i..SIZE - i {
+    //         if arr[i - 1][j] < arr[i][j] {
+    //             seen[i][j] = true;
+    //         }
+    //     }
+    // }
+    // Implement the Tree seen
